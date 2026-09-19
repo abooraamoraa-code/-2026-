@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="fmIO4Mqa4kbHD9R2jhb-fLWyRyd3Bi9UDHC8v84CkZk">
+<title>بوابة الأبراج المظلمة | الحكايات والزنزانات الأسطورية</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+:root {
+    --bg-dark: #050508;
+    --bg-panel: #0c0d14;
+    --blood-red: #dc2626;
+    --neon-purple: #9333ea;
+    --text-glow: #e2e8f0;
+    --text-dim: #94a3b8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-glow);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* خلفية مرعبة متحركة وخافتة */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 20%, rgba(147, 51, 234, 0.08) 0%, rgba(220, 38, 38, 0.04) 40%, transparent 80%);
+    z-index: -2;
+}
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(5,5,8,0.8), rgba(5,5,8,0.95));
+    z-index: -1;
+}
+
+header {
+    background: rgba(12, 13, 20, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(147, 51, 234, 0.2);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #fff, var(--blood-red), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+    cursor: pointer;
+}
+
+nav { display: flex; gap: 20px; align-items: center; }
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.nav-btn:hover, .nav-btn.active { color: var(--neon-purple); text-shadow: 0 0 10px var(--neon-purple); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; flex: 1; width: 100%; }
+
+/* قسم الهيرو المرعب */
+.hero-portal {
+    text-align: center;
+    padding: 60px 20px;
+    background: radial-gradient(circle at center, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 0 30px rgba(147, 51, 234, 0.1);
+}
+.hero-portal h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 0 0 15px var(--blood-red);
+}
+.hero-portal p { font-size: 16px; color: var(--text-dim); margin-bottom: 30px; }
+
+/* شريط البحث الحي الخرافي */
+.search-box {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+.search-box input {
+    width: 100%;
+    padding: 15px 25px;
+    background: rgba(12, 13, 20, 0.9);
+    border: 2px solid rgba(147, 51, 234, 0.4);
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+    transition: all 0.3s;
+}
+.search-box input:focus {
+    border-color: var(--blood-red);
+    box-shadow: 0 0 25px rgba(220, 38, 38, 0.4);
+}
+
+/* شبكة الحكايات والزنزانات */
+.grid-system {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.dungeon-card {
+    background: var(--bg-panel);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+.dungeon-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--neon-purple);
+    box-shadow: 0 10px 30px rgba(147, 51, 234, 0.3);
+}
+
+.dungeon-img {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.dungeon-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--blood-red);
+    color: var(--blood-red);
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.dungeon-content { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+.dungeon-title { font-size: 20px; font-weight: 900; margin-bottom: 10px; color: #fff; }
+.dungeon-desc { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin-bottom: 20px; flex: 1; }
+.enter-btn {
+    background: linear-gradient(135deg, var(--neon-purple), var(--blood-red));
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: opacity 0.2s;
+}
+.enter-btn:hover { opacity: 0.9; }
+
+/* صفحة قراءة القصة / الزنزانة */
+.reader-view { display: none; }
+.reader-box {
+    background: var(--bg-panel);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.9);
+}
+.reader-title { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 15px; text-shadow: 0 0 10px var(--neon-purple); }
+.reader-meta { font-size: 13px; color: var(--blood-red); margin-bottom: 30px; font-weight: bold; }
+.reader-body { font-size: 16px; line-height: 2.2; color: #cbd5e1; margin-bottom: 40px; white-space: pre-line; }
+
+.back-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.back-btn:hover { background: rgba(255,255,255,0.1); }
+
+footer {
+    background: #020204;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 25px;
+    font-size: 13px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo" onclick="switchView('home')">⚡ الأبراج المظلمة</div>
+    <nav>
+        <button class="nav-btn active" onclick="switchView('home')">الرئيسية</button>
+        <button class="nav-btn" onclick="switchView('dungeons')">الزنزانات</button>
+        <button class="nav-btn" onclick="switchView('ranking')">لوحة الصيادين</button>
+    </nav>
+</header>
+
+<div class="container">
+    <!-- الصفحة الرئيسية / قائمة القصص -->
+    <div id="homeView" class="page-view">
+        <div class="hero-portal">
+            <h1>بوابة الزنزانات المحرمة</h1>
+            <p>اختر زنزانتك بحذر.. الأكواد هنا تحرسها وحوش ضارية وقصص تفوق الخيال.</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن زنزانة، وحش، أو قصة مظلمة..." onkeyup="filterDungeons()">
+            </div>
+        </div>
+
+        <div class="grid-system" id="dungeonsGrid">
+            <!-- سيتم توليد البطاقات ديناميكياً عبر الجافاسكريبت -->
+        </div>
+    </div>
+
+    <!-- صفحة قراءة القصة التفاعلية -->
+    <div id="readerView" class="reader-view">
+        <div class="reader-box">
+            <button class="back-btn" onclick="switchView('home')">← العودة للبوابات</button>
+            <div id="readerContent"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    جميع الحقوق محفوظة © 2026 - بوابة الأبراج المظلمة (إشراف أبو العز)
+</footer>
+
+<script>
+    // قاعدة بيانات الحكايات والزنزانات الخيالية المرعبة
+    const dungeonsData = [
+        {
+            id: 1,
+            title: "زنزانة التماثيل العملاقة (رتبة S)",
+            badge: "خطر مميت",
+            desc: "دخل الصيادون المعبد المظلم ليكتشفوا تماثيل حجرية عملاقة تبتسم بمرارة وتتحرك فور انطفاء الشموع الأخيرة.",
+            image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+            story: `في أعمق نقطة من زنزانة المعبد مزدوج الطبقات، وقف الصيادون أمام تمثال الإله الضخم الذي يملأ القاعة هيبة ورعباً. 
+            كانت القواعد واضحة: الركوع باحترام، الثناء، ثم الهروب لمن ينجو. 
+            لكن مع أول حركة خاطئة، انغلق الباب الحجري العميق على وقع أصوات صرير مرعبة. بدأت العيون الحمراء للتماثيل بالاشتعال في الظلام الدامس.. 
+            هنا تبدأ نقطة التحول الكبرى للبطل عندما تضيء أمامه شاشة النظام الغامضة معلنة بداية استيقاظ القوة المطلقة.`
+        },
+        {
+            id: 2,
+            title: "عرين الملك النمل الظلل",
+            badge: "مرعب جداً",
+            desc: "مملكة تحت الأرض يحكمها كائن جشع يلتهم المهارات ويستنسخ جيوش الأعداء دون شفقة.",
+            image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+            story: `في أعماق الجزيرة المحظورة، تتجمع أسراب النمل المتحور ذات الذكاء الخارق. ملكهم لم يكن مجرد وحش عشوائي، بل كان كياناً يستوعب لغة البشر وتكتيكاتهم الحربية.
+            الظلام هنا ليس غياباً للنضوء، بل هو كائن حي يلتهم روح كل من يدخل الحدود دون إذن. المعركة حتمية، والانتصار يتطلب كسر حدود البشرية والوصول لرتبة الظل.`
+        },
+        {
+            id: 3,
+            title: "برج الأكواد الملعونة",
+            badge: "تحدي عقلي",
+            desc: "برج الكتروني مظلم تتقاطع فيه خوارزميات الذكاء الاصطناعي مع الأرواح الحائرة للمبرمجين الأوائل.",
+            image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80",
+            story: `يقال إن من يفتح هذا البرج على شاشته ويحاول تعديل شفرته المصدرية في منتصف الليل، سيتلقى أسطراً برمجية غريبة لا توجد في أي مرجع بشري. 
+            الشاشات تومض باللون الأحمر، والنظام يرفض الخروج حتى يتم حل لغز الذاكرة المفقودة.. هل تستطيع النجاة قبل انهيار السيرفر؟`
+        }
+    ];
+
+    function renderDungeons(items) {
+        const grid = document.getElementById('dungeonsGrid');
+        grid.innerHTML = '';
+        
+        if(items.length === 0) {
+            grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 40px;">لا توجد زنزانات تطابق بحثك المظلم..</p>';
+            return;
+        }
+
+        items.forEach(d => {
+            grid.innerHTML += `
+                <div class="dungeon-card" onclick="openDungeon(${d.id})">
+                    <div class="dungeon-img" style="background-image: url('${d.image}')">
+                        <span class="dungeon-badge">${d.badge}</span>
+                    </div>
+                    <div class="dungeon-content">
+                        <h3 class="dungeon-title">${d.title}</h3>
+                        <p class="dungeon-desc">${d.desc}</p>
+                        <button class="enter-btn">اقتحام الزنزانة ⚡</button>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function filterDungeons() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const filtered = dungeonsData.filter(d => 
+            d.title.toLowerCase().includes(query) || d.desc.toLowerCase().includes(query)
+        );
+        renderDungeons(filtered);
+    }
+
+    function openDungeon(id) {
+        const dungeon = dungeonsData.find(d => d.id === id);
+        if(!dungeon) return;
+
+        document.getElementById('readerContent').innerHTML = `
+            <h1 class="reader-title">${dungeon.title}</h1>
+            <div class="reader-meta">حالة البوابة: ${dungeon.badge} | مستوى الخطورة: أقصى درجات الحذر</div>
+            <div class="reader-body">${dungeon.story}</div>
+            <button class="enter-btn" onclick="alert('لقد اجتزت اختبار الزنزانة بنجاح وحصلت على وسام الشجاعة الرقمية!')">جمع جوائز الزنزانة 🎁</button>
+        `;
+
+        switchView('reader');
+    }
+
+    function switchView(viewName) {
+        document.querySelectorAll('.page-view, .reader-view').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+        if(viewName === 'home' || viewName === 'dungeons') {
+            document.getElementById('homeView').style.display = 'block';
+            window.scrollTo(0,0);
+        } else if(viewName === 'reader') {
+            document.getElementById('readerView').style.display = 'block';
+            window.scrollTo(0,0);
+        } else if(viewName === 'ranking') {
+            document.getElementById('homeView').style.display = 'block';
+            document.getElementById('dungeonsGrid').innerHTML = `
+                <div style="grid-column: 1/-1; background: var(--bg-panel); padding: 40px; border-radius: 15px; border: 1px solid var(--neon-purple); text-align: center;">
+                    <h2 style="color:#fff; margin-bottom: 15px; font-size: 24px;">👑 لوحة صدارة الصيادين الأسطوريين</h2>
+                    <p style="color: var(--text-dim); margin-bottom: 25px;">أبرز الصيادين الذين سيطروا على الأبراج المظلمة:</p>
+                    <ul style="list-style: none; max-width: 400px; margin: 0 auto; text-align: right;">
+                        <li style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">1. الصياد: أبو العز (المستوي الأقصى - سادة الظلال) ⚡</li>
+                        <li style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">2. الصياد: كاشف الأكواد (رتبة S)</li>
+                        <li style="padding: 10px;">3. الصياد: حارس البوابة (رتبة A)</li>
+                    </ul>
+                </div>
+            `;
+            window.scrollTo(0,0);
+        }
+    }
+
+    // تشغيل القائمة الأولية عند تحميل الصفحة
+    window.onload = () => renderDungeons(dungeonsData);
+</script>
+
+</body>
+</html>
